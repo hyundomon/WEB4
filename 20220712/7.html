@@ -7,17 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    <p>1번째 가전제품은 <span class="'electronics1"></span></p>
-    <p>2번째 가전제품은 <span class="'electronics2"></span></p>
-    <p>3번째 가전제품은 <span class="'electronics3"></span></p>
+    <p>1번째 가전제품은 <span class="electronics1"></span>입니다.</p>
+    <p>2번째 가전제품은 <span class="electronics2"></span>입니다.</p>
+    <p>3번째 가전제품은 <span class="electronics3"></span>입니다.</p>
     
     <script>
-        var electronics1 = document.querySelector('.electronics1');
-        var electronics2 = document.querySelector('.electronics2');
-        var electronics3 = document.querySelector('.electronics3');
+        var electronics1 = document.querySelector(".electronics1");
+        var electronics2 = document.querySelector(".electronics2");
+        var electronics3 = document.querySelector(".electronics3");
 
-        var input = prompt(우리집에 있는 가전제품);
-        // 이거 위에 생략가능하다?왱ㅇ?
+        // var input = prompt(우리집에 있는 가전제품);
+        // 이거 위에 생략가능하다?왱ㅇ?아마동? 위에 저 바인풋을 넣으면 왜 작동이 안되지 틀린것인가??***
 
         electronics1.innerText = prompt("첫번째 가전제품은 무엇인가요?");
         electronics2.innerText = prompt("두번째 가전제품은 무엇인가요?");
