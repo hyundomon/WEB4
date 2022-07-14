@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    조건문이란?
+
+    조건이 참이면 이렇게 해라   
+    <!-- 조건식이 참이면 실행할 내용을 해라라는 의미 -->
+
+    혹은
+    
+    조건이 참일때 이렇게 거짓일때 저렇게
+
+
+    조건문이 여러개이면 esle 또는 else if 를 사용하여랒!?????물어보기***
+    <script>
+        /*
+        if(조건식){
+            실행할내용;
+        }
+        */
+        
+
+        // 노키즈존,초등학생은 들어올 수 없다.
+
+        kidsAge = prompt("아이가 몇살인가요?");
+        
+        if(kidsAge <= 13){
+            alert("노키즈존이라 입장 불가능합니다.");
+        }
+
+
+        // 이조건에서 입장시킬건지, 거부시킬건지 생각해 봐야함.
+
+        /*  if(조건식){
+            alert(참일때 실행될 구문 ); 
+        }else{
+            alert(거짓일때 실행될 구문 ); 
+        } */
+
+// 위에 else있는것이랑 없는 것이랑 같은 의미이다.
+// if(조건식)문은 괄호에 들어가는 조건을 평가해서 참(true)일 경우에 코드 블록이 실행된다.
+// if문에 else절을 붙일 수 있는데, else절 뒤에 이어지는 코드 블록은 조건이 거짓(false)일 때 실행된다.
+// else절은 선택 사항이며, 조건이 거짓일 경우 else절의 코드 블록이 실행되도록 해줄 수도 있지만
+// 두번째 코드식과 같이 else을 생략하고 if문 코드 블록이 밑에 실행할 식을 써줄 수도 있다.
+// 고로, 아래 두 코드식은 같은 의미를 가진다. 🤩
+
+
+        /*  if(조건식){
+            alert(참일때 실행될 구문 ); 
+        } 
+            alert(거짓일때 실행될 구문 );*/
+            
+            
+        if(kidsAge <= 13){
+            alert('노키즈존이라 입장불가');
+        }else{
+            alert('어서오세요');
+        }
+
+        // 초등학생은 입장불가한 노키즈존이나, 2세 이하는 입장가능할 경우 밑에꺼
+
+        /*   if(조건1){
+
+        }else if(조건2){
+
+        }  */
+
+        if(kidsAge <= 2){
+            alert("완전 애기는 입장가능");
+        }else if ( kidsAge <= 13) {
+            alert("노키즈존이라 입장불가");
+        }
+
+        /*조건문은 항상 if로 시작
+        조건문을 추가하려면 else if 이용하면 됨
+        else는 생략가능*/
+
+
+
+    </script>
+</body>
+</html>

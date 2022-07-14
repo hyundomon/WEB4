@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 잘못된 입력입니다  -50, 1200 조건추가  나이가 음수이거나 너무 큰 숫자입력했을때
+
+        var age = prompt("몇살인가요?");
+        
+        if(age < 0) {
+            alert("잘못된 입력입니다.");
+        }else if(age < 20) {
+            alert("미성년자");
+        }else if(age < 65) {
+            alert("성인");
+        }else if(age < 100){
+            alert("노인");
+        }else {
+            alert("잘못된 입력입니다");
+        }
+
+        //****숫자 순서 잘 파악해서 입력하기!!!!!*******
+    </script>
+</body>
+</html>

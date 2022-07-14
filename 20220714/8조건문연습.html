@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    조건문이란?
+
+    조건이 참이면 이렇게 해라   
+    <!-- 조건식이 참이면 실행할 내용을 해라라는 의미 -->
+
+    혹은
+    
+    조건이 참일때 이렇게 거짓일때 저렇게
+
+    <script>
+
+
+        var age = prompt("몇살인가요?");
+
+        if(age <= 19){
+            alert("미성년자");
+        }else if(age <= 64){
+            alert("성인");
+        }else if(age <= 100){
+            alert("노인");
+        }
+
+        // 1-19세 미성년자  20-64세 성인  65-100세 노인
+
+        /* if 문은 if부터 else까지가 한 덩어리다. 
+        조건을 한번 만족하면 그아래는 다 무시한다. */
+       
+        var age = prompt("몇살인가요?");
+
+        if(age <= 20) {
+            alert("미성년자");
+        }else if(age < 65) {
+            alert("성인");
+        }else {
+            alert("노인");
+        }
+
+        // 이게 스앵님이 알려주신 정답이다!!******
+
+    </script>
+</body>
+</html>
