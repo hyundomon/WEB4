@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        let b = 0;
+        //  = 0 을 b를 초기화시켰다는 의미!!
+        for (let i = 0; i < 5; i++ ) {
+            b = b + i;
+        }
+        cosole.log(b);
+
+        // 1번째 실행 : i = 0, b=0 b+i=0
+        // 2번째 실행 : i = 1, b=0 b+i=1
+        // 1번째 실행 : i = 2, b=1 b+i=3
+        // 1번째 실행 : i = 3, b=3 b+i=6
+        // 1번째 실행 : i = 4, b=6 b+i=10
+    
+    // **결과 b는 0으로 계속 대입하는데 i값이 더해지면서 b숫자가 증가한 숫자가 대입된다!!
+
+    // 위에 for식 뜻!!!**** let i를 영부터 시작해서 i는 5(내가 정한 임의의 아무수)보다 작은 동안에 계속 반복할건데 계속 반복하면서 (i++의 의미 ->)i를 한개씩 늘려주겠다!!
+    // 반복에 사용할 값을 초기화 해줌 i는 인덱스에줄인말리고 반복문에 쓰인다!!
+    
+    /* **for문 에서는 let을 여러개 써도 된다!!!만약 두번 연속으로 쓰면, 
+    첫번재는 첫번째값, 두번재는 첫번째와 두번째 하난하나에서 나온값의 합!!!!!***  */
+        
+
+    for (let i = 0; i < 5; i++ ) {
+            b = b + i;
+        }
+        if(i<5){
+        b = b + i;
+        i++ 
+        }
+        if(i<5){
+        b = b + i;
+        i++ 
+        }
+        if(i<5){
+        b = b + i;
+        i++ 
+        }
+        if(i<5){
+        b = b + i;
+        i++ 
+        }
+        if(i<5){
+        b = b + i;
+        i++ 
+        }
+
+        // 풀어서 보면 이런 의미의 식이다!!5번 반복시키고 반복시키는 와중에 i++이게 있어서 0,1,2,3을 더 더해야한다?!!
+        
+
+
+
+    </script>
+</body>
+</html>

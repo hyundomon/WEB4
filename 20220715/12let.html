@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    변수 선언할때 var를 이용해서 선언한다.
+    ***var는 호이스팅과 스코프 때문에 문제가 많아서
+
+    "let"(변수) 와 "const"(상수) 라는 것을 사용한다!!*****
+    변수: 값이 변하는 것 ex)나이,집주소 이런것 / 상수: 값이 변하지 않는 것 ex)생일 등
+
+    <script>
+        let myAge = 20;
+        myAge = 30;
+        console.log(myAge);
+        
+        // 마이에이쥐 값에 20(아무숫자 넣어도됌.)을 넣었는데 밑에서 아니야.30을 넣어!!출력해!!
+        // 그래서 결과값이 30이 나온다 무조건!
+
+
+        // 나이구하기연습  현재 년도에서 년도 빼주고 +1
+        const count = document.querySelector(".count");
+        const myBirthYear=1993
+        const myBirthMonth=09
+        const myBirthDay=20
+
+        const today = new Date();
+        
+        /* 밑에 getfullyear를 쓴 이유는 뒤에 년도달날짜시간까지 먹어서 
+        우리는 딱 년도만 필요해서 고것만 지정해줘서 저렇게 쓴 것이다!!*/
+        let age = today.getFullYear() - myBirthYear + 1;
+        console.log(`올해 내 나이는 ${age}살이다..`);
+        // ${여기에 넣고싶은 거(변수?) 넣으면 됨!!!****}
+        console.log('올해 내 나이는 ' + age + '살이다..')
+        // 달러 들어간거랑 밑에 플러스고거랑 의미느 같은데??, 달라저게 나중에 쓰기 더 편해서 이걸 써야한다.
+    </script>
+</body>
+</html>

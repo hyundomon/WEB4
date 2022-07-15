@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    변수 선언할때 var를 이용해서 선언한다.
+    ***var는 호이스팅과 스코프 때문에 문제가 많아 
+    "let"이라는 것을 사용한다!!
+
+<!-- 그래서!!위에 앞시간에 var쓴 것은 틀린건 아니지만 "let"으로 써야 좋다@!!되도록 let으로 써라!!var는 구식이야!! -->
+    <script>
+        var a = 0;
+
+        var a = 10;
+        
+        // 변수를 선언했는데 또 선언했는데도 개발자도구가서 콘솔들어가면 오류가 안뜸 
+        // 왱?? 자바스크립트에서 var로 선언한 변수는 "호이스팅"이라는 변수?가있다!!
+        a = 10 ;
+        console.log(a);
+        var a = 0;
+
+        // 바가 밑에 있으면 위에다가 변수를 선언한것임 그래서 밑에모양처럼 실행됨
+        // 쉽게말하면 바가 우선순위가 높다고 볼 수 있다.
+        a = 10;
+        cosole.log(a);
+        a = 0;
+
+    </script>
+</body>
+</html>
