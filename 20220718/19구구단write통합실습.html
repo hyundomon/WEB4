@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            color: blue;
+        }
+
+        div {
+          float: left;
+          padding: 20px;
+          width: 100px;
+          margin: 20px;
+          border: 1px solid black;
+          text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>구구단 + document.write()실습</h1>
+    
+    
+
+    <script>
+        for(let i = 1 ; i <= 9 ; i++) {
+            document.write(`<div>`);
+            document.write(`<h2>${i}단</h2>`);
+            for (let j =1; j < 10; j++) {
+              document.write(`${i}x${j}=${i*j}`);
+              document.write(`<br>`);
+            }
+            document.write(`</div>`);
+        }
+
+        // 강사님이 하나하나 풀어 써주심!!
+        // ijk는 범위가 큰 순서대로 써주는 것이 좋다!!*** 
+        // br은 엔터역할이라서 써줘야 일자로 쫘르륵 입력됨!***
+    </script>
+</body>
+</html>

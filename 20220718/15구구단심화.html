@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        for(let i = 1 ; i <= 9 ; i++) {
+            console.log(`${1} x ${i} = ${1 * i}`);
+        }
+        // 로그뒤에 1이 1이라서 1단을 의미!!!!   
+        // 그리고 let i = 1 에서 1의 의미는 2x1 2x2 2x3 뒤에 증가하는 숫자들 의미!!!****
+
+        for(let i = 1 ; i <= 9 ; i++) {
+            console.log(`${2} x ${i} = ${2 * i}`);
+        }
+
+        for(let i = 1 ; i <= 9 ; i++) {
+            console.log(`${3} x ${i} = ${3 * i}`);
+        }
+
+        for(let i = 1 ; i <= 9 ; i++) {
+            console.log(`${4} x ${i} = ${4 * i}`);
+        }
+
+
+        // 반복문 이중으로 쓸때 let i,j ,k,l 이런 순으로 써줌!아이다음엔 제이 제이다음엔 케이 이렇게!
+        
+        // 매번 이렇게 마니 반복해서 쓰기엔 넘 귀찮으니까   "반복문 중첩"해서 사용!!
+        // 고것이 이밑에것!! 이중반복문으로 간단하게 맹들어 준거임!!**
+        
+        for(let j = 2 ; j <= 9 ; j++) {
+            for(let i = 1 ; i <= 9 ; i++) {
+              console.log(`${j} x ${i} = ${j * i}`);
+            }
+        }
+
+    /* 큰 반복문에 i 를 써주는 것이 좋음!!!!! 
+    여기서는 j들어간게 큰 반복문인데, 다음에는 i먼저 해주고 안에 작은뼈대가 j로!!! */
+    </script>
+</body>
+</html>
