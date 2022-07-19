@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 엑티브 하면 왜 빨간색이 되는지 꼭 알아두기!!!**** */
+        .active {
+            color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="hi">hihi</div>
+    <div class="hi">hihi</div>
+    <div class="hi">hihi</div>
+
+    <script>
+        // 이거 총 내용 다시한번 확인해서 개발자도구 콘솔에서 실행되는지 확인하기!!!!!!!!!!!!!!!!!!
+        function 출석체크 (){
+            console.log(`출석번호 1번은 ${WeB4수강생1}입니다`);
+            console.log(`출석번호 1번은 ${WeB4수강생2}입니다`);
+            console.log(`출석번호 1번은 ${WeB4수강생3}입니다`);
+        }
+
+        // 여러가지 요소들 한번에 넣을 수 있음  밑에꺼 [요기안에 쫘를륵써주기!]
+        const WEB4수강생 = [
+            '바나나',
+            '오렌지',
+            '사과',
+            '복숭아',
+            '자두',
+            '수박',
+        ];
+
+        // 반복문에 세미콜론; 넣어주기!!
+        function 반복문출석체크() {
+            for (let i = 0; i < 9; i++) {
+                // i <9 이부분에 WEB4 수강생.length 이라고 입력하면 새로운사람이 들어와도 실행이된다!!
+                // for (let i = 0; WEB4 수강생.length, i++)  이렇게!!!*****
+                console.log(`출석번호 ${i + 1}번은 ${WEB4수강생[i]}`)
+            }
+        }
+
+        const his = document.getElementsByClassName("hi");
+
+        for (let i = 0; i < his.length; i ++) {
+        /* his[i].addEventListener('click',() => {})
+           이형태 진짜많이 쓰이니까 잘 알아두기!!!******  */
+        his[i].addEventListener('click', () => {
+            if (his[i].classList.add("active")) {
+              his[i].classList.remove("active");
+            } else {
+                his[i].classList.add("active");
+            } 
+        });
+        }
+        // if문 뜻 : 클래스리스트에 엑티브가 있으면 빼주고 없으면 넣어주라!! 라는 뜻
+
+        // 토글!!!!!
+        for (let i = 0; i < his.length; i ++) {
+            his[i].addEventListener('click', () => {
+            his[i].classList.toggle("active");
+            /* 토글의 역할 클래스리스트에 엑티브가 있으면 뺴주고 없으면 넣어주는 역할!
+            위에 if문 준것을 간단하게 할 수 있다.!!***  */
+        });
+        }
+
+    </script>
+</body>
+</html>

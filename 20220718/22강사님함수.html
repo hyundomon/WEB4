@@ -61,22 +61,35 @@ Latest commit 3cf90e4 22 hours ago
     <div class="container">
       <h2 id="now-dan">asd</h2>
       <p class="output">111</p>
+      <!-- 아웃풋은 제목밑에 구구단 쫘르륵 쓰여진것 -->
     </div>
+
+
     <script>
       const calcButton = document.getElementById("calc");
+      // 아이디를 검색해서 동요소를 가져오겠다
       calcButton.addEventListener("click", () => {
+        // 동작시킬거야  :클릭했을때, 
         const danInput = document.getElementById("dan-input");
         const nowDan = document.getElementById("now-dan");
         const output = document.getElementsByClassName("output");
         const dan = danInput.value;
         danInput.value = "";
-
+        // "" 없앤다는 뜻 아무것도 없는 상태로 만든다. (입력창에 입력하고 입력한글자들이 사라진것.저장하고 사라진것임!!)
+        // 단인풋은 입력창 그 자체를 표현한 것이다!!
+        // value 의미는 값이라는 뜻 그 "입력된 값"이라는 의미?!!
+       
         nowDan.innerHTML = `${dan}단`;
         output[0].innerText = "";
+        // 첫번째로 오는 아웃풋은 0번째가된다?!! 무조건
+        // 요것(outpur[0]머시기 이거)은 이너에치티엠엘에 += 이 부호때문에 내용더하기 전에 초기화 시켜야해서 ""이거를 써줌
         for (let i = 1; i <= 9; i++) {
-          output[0].innerHTML += `${dan} x ${i} = ${dan * i}<br>`;
+          output[0].innerHtml += `${dan} x ${i} = ${dan * i}<br>`;
+          /* 위에랑 같은식 풀어써준거 
+          : output[0].innerHtml = output[0].innerHtml + `${dan} x ${i} = ${dan * i}<br>`; 이거랑 같음!!*/
         }
       });
+      // 이너에치티엠엘은 이너텍스트랑 비슷한것임  텍스트로써주는것을 추천!!
 
       function 세트로실행() {
         intro();

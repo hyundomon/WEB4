@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type = "button" onclick="귀요미들단체로짖기()" value="짖기"/>
+    <!-- 버튼 누르면 콘솔에 짖기가 실행된다!! 그냥 예시로 보여주심!! 
+    온클릭 보이면 안되는거라 그냥 보안땜에? 잘 안써준다,,,???(그냥 알아둬라?)-->
+    <script>
+        const 덕진 = {
+            출생: "21년 11월",
+            털: "갈색",
+            종: "리트리버 믹스",
+            // 이 위에것들이 프로퍼티?!이다.
+
+            // 밑에는 메서드?!이다.
+            짖기: function() {
+                console.log("덕진: 멍멍!");
+            },
+        };
+
+        const 구름이 = {
+            출생: "21년 9월",
+            털: "하얀색",
+            종: "말티즈",
+
+            짖기: function() {
+                console.log("구름: 멍멍!");
+            },
+        };
+
+        const 귀요미들 = [덕진,구름이];
+
+        function 귀요미들단체로짖기() {
+            for (let i = 0; i < 귀요미들.length; i++) {
+            귀요미들[i].짖기();
+            }
+        }
+
+        // 클래스 도그 디가 대문자다?? 메서드다 라는 뜻
+// class 연습?!
+        class Dog{
+            constructor(name,birth,color,brood){
+                this.name = name;
+                this.birth = birth;
+                this.color = color;
+                this.blood = brood;
+                this.voice = voice;
+            }
+            sound(){
+                console.log(`${this.name}: ${this.voice}`)
+            }
+        }
+
+    </script>
+</body>
+</html>
