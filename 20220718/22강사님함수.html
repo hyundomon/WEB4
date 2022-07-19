@@ -1,0 +1,107 @@
+Skip to content
+Search or jump to…
+Pulls
+Issues
+Marketplace
+Explore
+ 
+@hyundomon 
+venty1993
+/
+20220712
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+20220712/day5/함수.html
+@venty1993
+venty1993 0718
+Latest commit 3cf90e4 22 hours ago
+ History
+ 1 contributor
+79 lines (70 sloc)  1.97 KB
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 200px;
+        height: 400px;
+        background-color: #ebebeb;
+        border: 1px solid #232323;
+        box-sizing: border-box;
+        padding: 32px;
+      }
+
+      .now-dan {
+        margin-bottom: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="">몇단 출력할까요?</label>
+    <input id="dan-input" type="text" />
+    <button id="calc">출력</button>
+
+    <div class="container">
+      <h2 id="now-dan">asd</h2>
+      <p class="output">111</p>
+    </div>
+    <script>
+      const calcButton = document.getElementById("calc");
+      calcButton.addEventListener("click", () => {
+        const danInput = document.getElementById("dan-input");
+        const nowDan = document.getElementById("now-dan");
+        const output = document.getElementsByClassName("output");
+        const dan = danInput.value;
+        danInput.value = "";
+
+        nowDan.innerHTML = `${dan}단`;
+        output[0].innerText = "";
+        for (let i = 1; i <= 9; i++) {
+          output[0].innerHTML += `${dan} x ${i} = ${dan * i}<br>`;
+        }
+      });
+
+      function 세트로실행() {
+        intro();
+        구구단();
+      }
+
+      function 구구단() {
+        let dan = prompt(`몇단을 출력할까요?`);
+
+        for (let i = 1; i <= 9; i++) {
+          console.log(`${dan} x ${i} = ${dan * i}`);
+        }
+      }
+
+      function intro() {
+        alert("안녕하세요");
+        alert("제 이름은 홍길동입니다");
+        alert("잘 부탁드립니다");
+      }
+
+      function 전달받는구구단(dan) {
+        for (let i = 1; i <= 9; i++) {
+          console.log(`${dan} x ${i} = ${dan * i}`);
+        }
+      }
+    </script>
+  </body>
+</html>
