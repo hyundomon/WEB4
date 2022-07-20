@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #circle {
+            background-color: palevioletred;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+        }
+
+    </style>
+    
+</head>
+<body>
+    
+    <p>원 하나를 만든뒤에 자바스크립트를 이용하여
+       클릭할때마다 오른쪽으로 300px만큼 움직이도록 하세요</p>
+
+    <div id="circle" onclick = "moveCircle()" data-x="0">원</div>
+       
+
+   <script>
+       // 여기서는 그냥 300px만 움직이는거라 굳이 괄호 안에 이름 안지어서 넣어도된다.!!
+       function moveCircle() {
+           const circle = document.getElementById('circle');
+           x = Number(circle.dataset.x) + 300;
+           circle.style.transform = `translateX(${x}px)`;
+        //   얘는 이동시켜주느것
+           circle.dataset.x = x;
+        //   얘는 값을 주는 것
+       }
+
+    /*  해석:  디브에 데이타 엑스는 0으로 초기화함.
+    위에 데이터-x로 선언해서 밑에 데이터셋 엑스로 입력함
+    문자화 된것을 Number로 숫자로 바꿈을 선언하여 덧셈이 잘 되도록함ㄴ
+    ${x}라는 변수를 이용해서 움직이게끔 만들어줌
+    */
+    
+    </Script>
+</body>
+</html>

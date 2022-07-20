@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        ul {
+            display: flex;
+            width: 300px;
+            justify-content: space-between;
+        }
+
+        li {
+            width: 50px;
+            height: 30px;
+            border: 1px solid pink;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+            color: #232323;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <span id="target">아래 버튼을 누르면 글씨 크기와 색깔이 바뀐다</span>
+    <ul>
+        <li onclick="changeFontSize('12px')">작게</li>
+        <li onclick="changeFontSize('16px')">중간</li>
+        <li onclick="changeFontSize('20px')">크게</li>
+    </ul>
+
+    <ul>
+        <li onclick="changeColor('red')">빨간색</li>
+        <li onclick="changeColor('blue')">파란색</li>
+        <li onclick="changeColor('green')">초록색</li>
+    </ul>
+
+
+    <script>
+        function changeFontSize(size) {
+            const target = document.getElementById('target');
+            // target.style.fontSize = "변수를 넣어줘야함!! ex)size";
+            target.style.fontSize = size;
+
+        }
+
+        // (color) 이건 내 맘대로 이름 지어줘도됨!!!
+        function changeColor(color) {
+            const target = document.getElementById('target');
+            // target.style.fontSize = "변수를 넣어줘야함!! ex)size";
+            target.style.color = color;
+
+        }
+
+    </script>
+</body>
+</html>

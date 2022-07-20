@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #circle {
+            background-color: palevioletred;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <span id="target">원 하나를 만든뒤에 자바스크립트를 이용하여
+         클릭하면 오른쪽으로 300px만큼 움직이도록 하세요</span>
+
+         <!-- 여기서도  moveRight 이거 moveCircle로 써도된다 
+              이해하기쉽게 알아서 이름 지어서 넣으면 되는것 같다! -->
+         <div id="circle" onclick = "moveRight()">원</div>
+         <!-- <div onclick="moveCircle('margin-left:300px')"></div> ???????-->
+
+    <script>
+        // 여기서는 그냥 300px만 움직이는거라 굳이 괄호 안에 이름 안지어서 넣어도된다.!!
+        function moveRight() {
+            const circle = document.getElementById('circle');
+            circle.style.transform = 'translateX(300px)';
+        }
+
+    </script>
+</body>
+</html>
