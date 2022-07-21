@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 반복문쓰고 if문써서  입력은 prompt로 출력은 alert로 -->
+    <!-- 1부터 100까지의 난수를 생성해 up&down게임 만들기 -> 기회는 5번까지만 
+        정답보다 작은 수를 입력하면 up, 정답보다 큰 수를 입력하면 down이라고 알려주세요.-->
+    <!-- 모든 기회가 소진되기 전에 정답을 맞추면 축하를 해주고, 기회가 모두 소진되면
+    실패임을 알려주고, 정답도 알려주세요 -->
+
+    <script>
+
+        const answer = Math.floor(Math.random() * 100 +1);    // 1~100까지
+        let count;    // 도전기회
+
+        alert("up&down 게임에 오신것을 환영합니다!")
+        alert("1부터 100사이의 숫자를 맞춰주세요.")
+
+        // count = 
+        // 7 - prompt(`난이도를 입력해 주세요`, 1: easy  2: nomal  3: hard);
+        const level = Number(prompt("난이도"));
+        if (level === 1) {
+            count = 6;
+        } else if (level === 2) {
+            count = 5;
+        } else if  (level ===3) {
+            count = 4;
+        }
+
+        for (let i = 0; i < count; i++) {
+            const input = prompt("정답은 무엇일까요?");
+            
+            if (input === answer) {
+                alert("정답입니다!");
+            } else if (i === count - 1) {
+                alert(`실패입니다..정답은 ${answer}입니다`);
+            } else if (input > answer) {
+                alert("Down");
+            } else {
+                alert("up");
+            }
+        }
+    </script>
+</body>
+</html>
