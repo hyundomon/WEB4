@@ -33,7 +33,8 @@
         }
 
         for (let i = 0; i < count; i++) {
-            const input = prompt("정답은 무엇일까요?");
+            const input = Number(prompt("정답은 무엇일까요?"));
+            console.log(input);
             
             if (input === answer) {
                 alert("정답입니다!");
@@ -45,6 +46,8 @@
                 alert("up");
             }
         }
+
+    // == ㅈㅏ료형은 파악하지않고 
     </script>
 </body>
 </html>

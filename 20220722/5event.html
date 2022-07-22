@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="here">안녕!</div>
+    <script>
+
+        /* 
+        자바스크립트로 dom요소를 조직할 수 있는 방법은 크게 2가지가 있다.
+        ex) 클릭, 드래그, 스크롤, 등등 어떤 상황에서 응답하도록 만드는 것.
+
+        첫번째는 html태그 내부에 on~ = "함수()" 형태로 작성하는 것
+
+        두번째는 자바스크립트에서 dom 요소를 가져와 이벤트 리스너를 추가하는 것
+
+        onclick 에 함수를 두번넣는 것은 불가능하다!!****
+
+        onclick의 장점
+        - 호환성이 좋다!(인터넷 익스플로어6 부터도 호환이 된다.)
+          하지만 ie(인터넷익스플로어)지원이 공식적으로 종료되면서 글쎄...?
+
+          onclick의 단점
+        - 함수이름이 외부에 노출된다.
+        - 프로퍼티에 함수가 들어가기 때문에 중복선언이 불가능하다.
+
+        예를 들자면?
+        */
+
+        const here = document.querySelector('.here');
+        here.onclick = function() {
+            alert("hi");
+        };
+        here.onclick = function() {};
+
+        const addEvent = document.querySelector(".add-event");
+
+        // 여기 ()=>{} 이거는 화살표함수? 최신용어래!
+        addEvent.addEventlistener('click',() => {
+            alert("클릭하셨군요");
+        });
+        addEvent.addEventlistener('click',() => {
+            alert("그렇군요");
+        });
+    </script>
+</body>
+</html>

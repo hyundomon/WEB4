@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 300px;
+            height: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .print {
+            font-size: 56px;
+            font-weight: bold;
+        }
+        .count-up-button {
+            width: 250px;
+            height: 50px;
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- 버튼을 하나 만들어서 버튼을 누르면 숫자가 1식 증가하도록 
+         addEventListner를 이용해서 만들어주세요 -->
+
+        <div class="container">
+            <p class="print">0</p>
+            <button class="count-up-button">카운트 증가 버튼</button>
+        </div>
+
+    <script>
+
+        // const countUpButton = document.querySelector('.count-up-button');
+        // countUpButton.onclick = function(){
+        //     alert()
+        // }
+
+        // const addEvent = document.querySelector(".add-event");
+
+        // addEvent.addEventListener('click'), () => {
+        //     alert("+1");
+        // };
+
+        const print = document.querySelector(".print");
+        const countButton = document.querySelector(".count-up-button");
+
+        let count = 0;
+
+        countUpButton.addEventListener("click", () => {
+            count++;
+            print.innerText = count;
+        });
+        
+    </script>
+</body>
+</html>
