@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <span>현재시간은</span>
+        <!-- <span>시계를 보세요</span> -->
+        <!-- 위 내용을 노드를 만들어 삽입하세요 -->
+    </div>
+
+    <script>
+        const makeNode = document.createElement("span");  // 태그 제작
+        const nodeInner = document.createTextNOde("시계를 보세요");  // 텍스트노드 제작
+        
+        makeNode.appendChild(nodeInner);  // 만든 태그와 텍스트노드를 연결시켜주기
+        
+        const container = document.querySelector(".container");
+
+        container.appendChild(makeNode);
+    </script>
+</body>
+</html>

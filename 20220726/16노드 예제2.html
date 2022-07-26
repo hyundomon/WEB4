@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>버튼</button>
+    <div class="container">
+        <!-- 버튼을 누르면 이 위치에 
+            [n번 눌렀습니다] 라는 텍스트가 쌓이도록 만들어 주세요.
+            태그는 p태그를 이용하고, innerHtml은 사용하면 안됩니다.
+            n 숫자는 버튼을 누를때마다 1씩 증가해야합니다. -->
+
+        
+    </div>
+
+    <script>
+        const button = document.getElementsByTagName("button");
+        let count = 0;
+
+        button[0].addEventListener("click", () => {
+            count++;
+            const makeTag = document.createElment("p");
+            constpTagInner = document.createTextNode('${count}번 눌렀습니다.');
+            
+            makeTag.appendChild(pTagInner);
+
+            const container = document.querySelector(".container");
+
+            container.appendChild(makePTag);
+        });
+        
+    </script>
+</body>
+</html>
