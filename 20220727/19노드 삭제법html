@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 이 노드지우는 기능은 언제 사용하는가?? -->
+    <!-- 검색기록을 삭제할때 삭제누르고 내용까지 지워져야 할때 사용한다 -->
+    <button id="del-button">삭제</button>
+    <p id="place"> 버튼을 누르면 이 태그가 삭제됩니다.</p>
+    <script>
+        const deButton = document.getElementById("del-button");
+        const palce = document.getElementById("place");
+        const body = document.getElementsByTagName("body");
+
+        delButton.addEventListener("click");
+        
+    </script>
+</body>
+</html>
