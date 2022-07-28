@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 여기서 e 는 키다운햇을때 발생한이벤트를 e라고 이름지어서 넣은것!
+        window.addEventListener("keydown", (e) => {
+            console.log(e.key);
+
+            // === 내용도 같고 자료형도 같을때 (연산자)
+            if (e.key === "Enter") {
+                alert("엔터!");
+            }
+        });
+        
+    </script>
+</body>
+</html>
