@@ -14,12 +14,15 @@
             list-style: none;
         }
         .slider {
+            margin: 24px;
             width: 300px;
             height: 200px;
+            border: 5px solid black;
         }
 
         .slide-contents-wrapper {
             display: flex;
+            transition: 1s;
         }
 
         .slide-content {
@@ -31,7 +34,7 @@
             line-height: 200px;
             flex-shrink: 0;
         }
-
+        /* li 를 감싸고있는 ul태그한테 트렌스폼 트렌쓰레이트주기! */
         .slide-content:nth-child(1) {
             background-color: red;
         }
@@ -52,11 +55,23 @@
         </ul>
     </div>
     <script>
+        // 쿼리 셀렉터 .슬라이드콘텐츠레버 조건주어진거를 위에 html에서 찾아서 바로 적용시켜주는거임!!
         // 슬라이드이미지들을 큰틀에 담아서 묶고, 보여주고싶은 크기로 틀을 하나 만들어서 그 틀에맞게 보여주는것!
+        // 달러마크가 와도 안와도  ` 백틱으로 마니 써라!! ""  '' 이거 말고!
+        const slideContentsWrapper = document.querySelector(`.slide-contents-wrapper`);
 
+        let 이동거리 = 0;
 
+        slideContentsWrapper.addEventListener('click', () => {
 
-        
+            if(이동거리===600) {
+                이동거리 = 0;
+            } else {
+            이동거리 = 이동거리 + 300;
+        }
+            slideContentsWrapper.style.transform = `translateX(-${이동거리}px)`
+            // 이동거리에 움직이는 거리 대입해줘야함 위에서 -300px,-600px 이거!
+        });
     </script>
 </body>
 </html>

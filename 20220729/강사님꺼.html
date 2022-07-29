@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --slider-width: 300px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      .slider {
+        margin: 24px;
+        width: var(--slider-width);
+        height: 200px;
+        border: 5px solid black;
+        overflow: hidden;
+      }
+
+      .slide-contents-wrapper {
+        display: flex;
+        transition: 1s;
+      }
+
+      .slide-content {
+        width: var(--slider-width);
+        height: 200px;
+        font-size: 56px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 200px;
+        flex-shrink: 0;
+      }
+
+      .slide-content:nth-child(1) {
+        background-color: red;
+      }
+      .slide-content:nth-child(2) {
+        background-color: blue;
+      }
+      .slide-content:nth-child(3) {
+        background-color: green;
+      }
+
+      .buttons {
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider">
+      <ul class="slide-contents-wrapper">
+        <li class="slide-content">1</li>
+        <li class="slide-content">2</li>
+        <li class="slide-content">3</li>
+        <li class="slide-content">3</li>
+        <li class="slide-content">3</li>
+      </ul>
+    </div>
+    <div class="buttons">
+      <button class="prev">이전</button>
+      <button class="next">다음</button>
+    </div>
+
+    <script>
+      const slideContentsWrapper = document.querySelector(
+        `.slide-contents-wrapper`
+      );
+
+      const buttons = document.getElementsByTagName(`button`);
+      const prevButton = buttons[0];
+      const nextButton = buttons[1];
+
+      let 이동거리 = 0;
+      const 슬라이드너비 = document.querySelector(`.slider`).clientWidth;
+
+      nextButton.addEventListener("click", () => {
+        if (
+          이동거리 ===
+          슬라이드너비 * (slideContentsWrapper.childElementCount - 1)
+        ) {
+          //childElmentCount 프로퍼티에는 자식요소의 갯수 값이 들어있다
+          이동거리 = 0;
+        } else {
+          이동거리 = 이동거리 + 슬라이드너비;
+        }
+
+        slideContentsWrapper.style.transform = `translateX(-${이동거리}px)`;
+      });
+
+      prevButton.addEventListener(`click`, () => {
+        if (이동거리 === 0) {
+          이동거리 =
+            슬라이드너비 * (slideContentsWrapper.childElementCount - 1);
+        } else {
+          이동거리 = 이동거리 - 슬라이드너비;
+        }
+
+        slideContentsWrapper.style.transform = `translateX(-${이동거리}px)`;
+      });
+    </script>
+  </body>
+</html>

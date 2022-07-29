@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+        --slider-width: 300px;
+      }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        .slider {
+            margin: 24px;
+            width: 300px;
+            height: 200px;
+            border: 5px solid black;
+            overflow: hidden;
+        }
+
+        .slide-contents-wrapper {
+            display: flex;
+            transition: 1s;
+        }
+
+        .slide-content {
+            width: var(--slider-width);
+            width: 300px;
+            height: 200px;
+            font-size: 56px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+            flex-shrink: 0;
+        }
+        /* li 를 감싸고있는 ul태그한테 트렌스폼 트렌쓰레이트주기! */
+        .slide-content:nth-child(1) {
+            background-color: red;
+        }
+        .slide-content:nth-child(2) {
+            background-color: blue;
+        }
+        .slide-content:nth-child(3) {
+            background-color: green;
+        }
+
+        .buttons {
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <ul class="slide-contents-wrapper">
+            <li class="slide-content">1</li>
+            <li class="slide-content">2</li>
+            <li class="slide-content">3</li>
+        </ul>
+    </div>
+
+    <div class="buttons">
+        <button class="prev">이전</button>
+        <button class="next">다음</button>
+    </div>
+    <!-- 슬라이드 버튼은 div나 button태그로 한다!! -->
+
+    <script>
+        // 쿼리 셀렉터 .슬라이드콘텐츠레버 조건주어진거를 위에 html에서 찾아서 바로 적용시켜주는거임!!
+        // 슬라이드이미지들을 큰틀에 담아서 묶고, 보여주고싶은 크기로 틀을 하나 만들어서 그 틀에맞게 보여주는것!
+        // 달러마크가 와도 안와도  ` 백틱으로 마니 써라!! ""  '' 이거 말고!
+        const slideContentsWrapper = document.querySelector(`.slide-contents-wrapper`);
+
+        const buttons = document.getElementsByTagName(`button`);
+        const prevButton = buttons[0];
+        const nextButton = buttons[1];
+
+        let 이동거리 = 0;
+        const 슬라이드너비 = document.querySelector(`.slider`).style.width;
+        // 나중에 크기 조절할때 이렇게 해야지 편함 여기만 사이즈숫자만 바꾸면 쉽게 변경가능!!
+
+        nextButton.addEventListener('click', () => {
+
+            if(이동거리 === 슬라이드너비 * (slideContentsWrapper.childElementCount - 1)
+            ) {
+                // childElementCount 프로퍼티에는 자식요소의 갯수 값이 들어있다.
+                이동거리 = 0;
+            } else {
+            이동거리 = 이동거리 + 슬라이드너비;
+            }
+            slideContentsWrapper.style.transform = `translateX(-${이동거리}px)`;
+            // 이동거리에 움직이는 거리 대입해줘야함 위에서 -300px,-600px 이거!
+        });
+        
+        prevButton.addEventListener('click', () => {
+        if(이동거리 === 0) {
+            이동거리 = 슬라이드너비 * (slideContentsWrapper.childElementCount - 1);
+        } else {
+        이동거리 = 이동거리 - 슬라이드너비;
+        }
+        slideContentsWrapper.style.transform = `translateX(-${이동거리}px)`;
+        // 이동거리에 움직이는 거리 대입해줘야함 위에서 -300px,-600px 이거!
+        });
+    </script>
+</body>
+</html>
