@@ -94,7 +94,7 @@
                 // childElementCount 프로퍼티에는 자식요소의 갯수 값이 들어있다.
                 이동거리 = 0;
             } else {
-            이동거리 = 이동거리 + 슬라이드너비;
+                이동거리 = 이동거리 + 슬라이드너비;
             }
             slideContentsWrapper.style.transform = `translateX(-${이동거리}px)`;
             // 이동거리에 움직이는 거리 대입해줘야함 위에서 -300px,-600px 이거!
@@ -104,7 +104,7 @@
         if(이동거리 === 0) {
             이동거리 = 슬라이드너비 * (slideContentsWrapper.childElementCount - 1);
         } else {
-        이동거리 = 이동거리 - 슬라이드너비;
+            이동거리 = 이동거리 - 슬라이드너비;
         }
         slideContentsWrapper.style.transform = `translateX(-${이동거리}px)`;
         // 이동거리에 움직이는 거리 대입해줘야함 위에서 -300px,-600px 이거!
