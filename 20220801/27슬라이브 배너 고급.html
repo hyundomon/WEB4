@@ -88,6 +88,7 @@
       );
       const cloneFirst = slideContentsWrapper.firstElementChild.cloneNode(true);
       const cloneLast = slideContentsWrapper.lastElementChild.cloneNode(true);
+      const 슬라이드너비 = document.querySelector(`.slider`).clientWidth;
 
       slideContentsWrapper.insertBefore(cloneLast,slideContentsWrapper.firstChild);
       slideContentsWrapper.appendChild(cloneFirst);
@@ -98,27 +99,37 @@
       const prevButton = buttons[0];
       const nextButton = buttons[1];
 
+      let moveChecker = true;
+      // 무브체커 임의의 이름이고, 움직이고 있는지 아닌지 확인하는 것임!
+
       // 이동거리를 인덱스로 바꿈 이동거리로다루는거보다 인덱스로 다루는게 더편함 그래서 바꿔줌 스앵님이
       
       let index = 1;
       moveSlide(false);
 
       nextButton.addEventListener("click", () => {
-        if (index === slideContentsWrapper.childElementCount - 1) {
-          //childElmentCount 프로퍼티에는 자식요소의 갯수 값이 들어있다
-          index = 1;
-          moveslide(false);
-        } else {
+        if (movChecker) {
+          moveChecker = flase;
           index++;
           moveSlide(true);
-        }
-        // 인덱스 값이 슬라이드너비로하면 값이 바뀌게되서 그러면 안되서 
 
-      });
+          setTimeout(() = > {
+            moveChecker = true;
+            if (index === slideContentsWrapper.childElementCount - 1) {
+            //childElmentCount 프로퍼티에는 자식요소의 갯수 값이 들어있다
+              index = 1;
+              moveSlide(false);
+              } 
+            }, 1000);
+            // 인덱스 값이 슬라이드너비로하면 값이 바뀌게되서 그러면 안되서 
+          }
+        });
+            // 1000은 1초뒤에 실행시켜주겠다 라는뜻 천은 1초뒤!
 
       prevButton.addEventListener(`click`, () => {
         if (index === 0) {
           index = (slideContentsWrapper.childElementCount - 2);
+          // 다섯칸중 3번째칸 나와야 하니까 5-2 =3 한거다
         } else {
           index--;
         }
