@@ -112,19 +112,22 @@
         }
         // 인덱스 값이 슬라이드너비로하면 값이 바뀌게되서 그러면 안되서 
 
-      slideContentsWrapper.style.transform = `translateX(-${index * 슬라이드너비}px)`;
+        moveSlide();
       });
 
       prevButton.addEventListener(`click`, () => {
         if (index === 0) {
-          index =
-            슬라이드너비 * (slideContentsWrapper.childElementCount - 1);
+          index = (slideContentsWrapper.childElementCount - 1);
         } else {
-          index = index - 슬라이드너비;
+          index--;
         }
 
-        slideContentsWrapper.style.transform = `translateX(-${index}px)`;
+        moveSlide();
       });
+
+      function moveSlide() {
+        slideContentsWrapper.style.transform = `translateX(-${index * 슬라이드너비}px)`;
+      }
     </script>
   </body>
 </html>
