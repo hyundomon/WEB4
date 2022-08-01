@@ -21,7 +21,7 @@
         width: var(--slider-width);
         height: 200px;
         border: 5px solid black;
-        overflow: hidden;
+        /* overflow: hidden; */
       }
 
       .slide-contents-wrapper {
@@ -48,8 +48,8 @@
       .slide-content:nth-child(3) {
         background-color: green;
       } */
-/* nth-child()라는 가상선택자는 dom요소 순서를 기준으로 적용된다! */
-/* 그래서 앞뒤에 새로 추가해서 원래순서말고 순서대로 적용됨 */
+
+      /* nth-child()라는 가상선택자는 dom요소 순서를 기준으로 적용된다 */
 
       .content1 {
         background-color: red;
@@ -60,7 +60,6 @@
       .content3 {
         background-color: green;
       }
-      
       .buttons {
         width: 300px;
         display: flex;
@@ -88,8 +87,12 @@
       );
       const cloneFirst = slideContentsWrapper.firstElementChild.cloneNode(true);
       const cloneLast = slideContentsWrapper.lastElementChild.cloneNode(true);
+      const 슬라이드너비 = document.querySelector(`.slider`).clientWidth;
 
-      slideContentsWrapper.insertBefore(cloneLast,slideContentsWrapper.firstChild);
+      slideContentsWrapper.insertBefore(
+        cloneLast,
+        slideContentsWrapper.firstChild
+      );
       slideContentsWrapper.appendChild(cloneFirst);
 
       const slideContents = document.getElementsByClassName("slide-content");
@@ -98,8 +101,6 @@
       const prevButton = buttons[0];
       const nextButton = buttons[1];
 
-      // 이동거리를 인덱스로 바꿈 이동거리로다루는거보다 인덱스로 다루는게 더편함 그래서 바꿔줌 스앵님이
-      
       let index = 1;
       slideContentsWrapper.style.transform = `translateX(-${
         index * 슬라이드너비
@@ -112,15 +113,15 @@
         } else {
           index++;
         }
-        // 인덱스 값이 슬라이드너비로하면 값이 바뀌게되서 그러면 안되서 
 
-        slideContentsWrapper.style.transform = `translateX(-${index * 슬라이드너비}px)`;
+        slideContentsWrapper.style.transform = `translateX(-${
+          index * 슬라이드너비
+        }px)`;
       });
 
       prevButton.addEventListener(`click`, () => {
         if (index === 0) {
-          index =
-            슬라이드너비 * (slideContentsWrapper.childElementCount - 1);
+          index = 슬라이드너비 * (slideContentsWrapper.childElementCount - 1);
         } else {
           index = index - 슬라이드너비;
         }
