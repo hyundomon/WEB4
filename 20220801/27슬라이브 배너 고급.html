@@ -107,12 +107,13 @@
         if (index === slideContentsWrapper.childElementCount - 1) {
           //childElmentCount 프로퍼티에는 자식요소의 갯수 값이 들어있다
           index = 1;
+          moveslide(false);
         } else {
           index++;
+          moveSlide(true);
         }
         // 인덱스 값이 슬라이드너비로하면 값이 바뀌게되서 그러면 안되서 
 
-        moveSlide(true);
       });
 
       prevButton.addEventListener(`click`, () => {
