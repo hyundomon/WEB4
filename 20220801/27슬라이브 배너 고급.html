@@ -108,12 +108,12 @@
       moveSlide(false);
 
       nextButton.addEventListener("click", () => {
-        if (movChecker) {
-          moveChecker = flase;
+        if (moveChecker) {
+          moveChecker = false;
           index++;
           moveSlide(true);
 
-          setTimeout(() = > {
+          setTimeout(() => {
             moveChecker = true;
             if (index === slideContentsWrapper.childElementCount - 1) {
             //childElmentCount 프로퍼티에는 자식요소의 갯수 값이 들어있다
@@ -127,14 +127,20 @@
             // 1000은 1초뒤에 실행시켜주겠다 라는뜻 천은 1초뒤!
 
       prevButton.addEventListener(`click`, () => {
-        if (index === 0) {
-          index = (slideContentsWrapper.childElementCount - 2);
-          // 다섯칸중 3번째칸 나와야 하니까 5-2 =3 한거다
-        } else {
+        if (moveChecker) {
+          moveChecker = false;
           index--;
-        }
+          moveSlide(true);
 
-        moveSlide(true);
+          setTimeout(() => {
+            moveChecker = true;
+            if(index === 0) {
+              index = slideContentsWrapper.childElementCount -2;
+              // 다섯칸중 3번째칸 나와야 하니까 5-2 =3 한거다
+              moveSlide(false);
+            }
+          },1000); 
+        }
       });
 
       function moveSlide(transition) {

@@ -21,7 +21,7 @@
         width: var(--slider-width);
         height: 200px;
         border: 5px solid black;
-        /* overflow: hidden; */
+        overflow: hidden;
       }
 
       .slide-contents-wrapper {
@@ -95,39 +95,58 @@
       );
       slideContentsWrapper.appendChild(cloneFirst);
 
-      const slideContents = document.getElementsByClassName("slide-content");
-
       const buttons = document.getElementsByTagName(`button`);
       const prevButton = buttons[0];
       const nextButton = buttons[1];
 
+      let moveChecker = true;
+
       let index = 1;
-      slideContentsWrapper.style.transform = `translateX(-${
-        index * 슬라이드너비
-      }px)`;
+      moveSlide(false);
 
       nextButton.addEventListener("click", () => {
-        if (index === slideContentsWrapper.childElementCount - 1) {
-          //childElmentCount 프로퍼티에는 자식요소의 갯수 값이 들어있다
-          index = 1;
-        } else {
+        //childElmentCount 프로퍼티에는 자식요소의 갯수 값이 들어있다
+        if (moveChecker) {
+          moveChecker = false;
           index++;
+          moveSlide(true);
+
+          setTimeout(() => {
+            moveChecker = true;
+            if (index === slideContentsWrapper.childElementCount - 1) {
+              index = 1;
+              moveSlide(false);
+            }
+          }, 1000);
+        }
+      });
+      prevButton.addEventListener(`click`, () => {
+        if (moveChecker) {
+          moveChecker = false;
+          index--;
+          moveSlide(true);
+
+          setTimeout(() => {
+            moveChecker = true;
+            if (index === 0) {
+              index = slideContentsWrapper.childElementCount - 2;
+              moveSlide(false);
+            }
+          }, 1000);
+        }
+      });
+
+      function moveSlide(transition) {
+        if (transition) {
+          slideContentsWrapper.style.transition = `1s`;
+        } else {
+          slideContentsWrapper.style.transition = `0s`;
         }
 
         slideContentsWrapper.style.transform = `translateX(-${
           index * 슬라이드너비
         }px)`;
-      });
-
-      prevButton.addEventListener(`click`, () => {
-        if (index === 0) {
-          index = 슬라이드너비 * (slideContentsWrapper.childElementCount - 1);
-        } else {
-          index = index - 슬라이드너비;
-        }
-
-        slideContentsWrapper.style.transform = `translateX(-${index}px)`;
-      });
+      }
     </script>
   </body>
 </html>
