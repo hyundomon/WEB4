@@ -101,7 +101,7 @@
       // 이동거리를 인덱스로 바꿈 이동거리로다루는거보다 인덱스로 다루는게 더편함 그래서 바꿔줌 스앵님이
       
       let index = 1;
-      moveSlide();
+      moveSlide(false);
 
       nextButton.addEventListener("click", () => {
         if (index === slideContentsWrapper.childElementCount - 1) {
@@ -112,20 +112,26 @@
         }
         // 인덱스 값이 슬라이드너비로하면 값이 바뀌게되서 그러면 안되서 
 
-        moveSlide();
+        moveSlide(true);
       });
 
       prevButton.addEventListener(`click`, () => {
         if (index === 0) {
-          index = (slideContentsWrapper.childElementCount - 1);
+          index = (slideContentsWrapper.childElementCount - 2);
         } else {
           index--;
         }
 
-        moveSlide();
+        moveSlide(true);
       });
 
-      function moveSlide() {
+      function moveSlide(transition) {
+        if(transition) {
+          slideContentsWrapper.style.transition = "1s";
+        } else{
+          slideContentsWrapper.style.transition = "0s";
+        }
+
         slideContentsWrapper.style.transform = `translateX(-${index * 슬라이드너비}px)`;
       }
     </script>
