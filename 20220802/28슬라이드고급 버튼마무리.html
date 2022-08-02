@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --slider-width: 300px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      .slider {
+        margin: 24px;
+        width: var(--slider-width);
+        height: 200px;
+        border: 5px solid black;
+        overflow: hidden;
+      }
+
+      .slide-contents-wrapper {
+        display: flex;
+        transition: 1s;
+      }
+
+      .slide-content {
+        width: var(--slider-width);
+        height: 200px;
+        font-size: 56px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 200px;
+        flex-shrink: 0;
+      }
+
+      /* .slide-content:nth-child(1) {
+        background-color: red;
+      }
+      .slide-content:nth-child(2) {
+        background-color: blue;
+      }
+      .slide-content:nth-child(3) {
+        background-color: green;
+      } */
+/* nth-child()라는 가상선택자는 dom요소 순서를 기준으로 적용된다! */
+/* 그래서 앞뒤에 새로 추가해서 원래순서말고 순서대로 적용됨 */
+
+      .content1 {
+        background-color: red;
+      }
+      .content2 {
+        background-color: blue;
+      }
+      .content3 {
+        background-color: green;
+      }
+      
+      .buttons {
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 24px;
+      }
+
+      .radio-container {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .radio {
+        background-color: gray;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .radio.seleted {
+        background-color: red;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="slider">
+      <ul class="slide-contents-wrapper">
+        <li class="slide-content content1">1</li>
+        <li class="slide-content content2">2</li>
+        <li class="slide-content content3">3</li>
+      </ul>
+    </div>
+    <div class="buttons">
+      <button class="prev">이전</button>
+      <div class="radio-container">
+        <!-- <div class="radio"></div> -->
+      </div>
+      <button class="next">다음</button>
+    </div>
+
+    <script>
+      const slideContentsWrapper = document.querySelector(
+        `.slide-contents-wrapper`
+      );
+      const radioContainer = document.querySelector(".radio-container");
+    
+      const cloneFirst = slideContentsWrapper.firstElementChild.cloneNode(true);
+      const cloneLast = slideContentsWrapper.lastElementChild.cloneNode(true);
+      const 슬라이드너비 = document.querySelector(`.slider`).clientWidth;
+
+      for(let i=0; i < slideContentsWrapper.childElementCount; i++) {
+        const radioButton = document.createElement('div');
+        radioButton.classList.add('radio');
+        radioContainer.appendChild(radioButton);
+      }
+      // 슬라이드 갯수에 따라서 알아서 라디오버튼이 만들어진다!! 위에 바디의 슬라이드갯수 조정가능!
+      // 초기화해주기!!!
+
+      radioContainer.firstChild.classList.add("selected");
+
+      slideContentsWrapper.insertBefore(cloneLast,slideContentsWrapper.firstChild);
+      slideContentsWrapper.appendChild(cloneFirst);
+
+      const slideContents = document.getElementsByClassName("slide-content");
+
+      const buttons = document.getElementsByTagName(`button`);
+      const prevButton = buttons[0];
+      const nextButton = buttons[1];
+
+      let moveChecker = true;
+      // 무브체커 임의의 이름이고, 움직이고 있는지 아닌지 확인하는 것임!
+
+      // 이동거리를 인덱스로 바꿈 이동거리로다루는거보다 인덱스로 다루는게 더편함 그래서 바꿔줌 스앵님이
+      
+      let index = 1;
+      moveSlide(false);
+
+      nextButton.addEventListener("click", () => {
+        if (moveChecker) {
+          moveChecker = false;
+          index++;
+          moveSlide(true);
+
+          setTimeout(() => {
+            moveChecker = true;
+            if (index === slideContentsWrapper.childElementCount - 1) {
+            //childElmentCount 프로퍼티에는 자식요소의 갯수 값이 들어있다
+              index = 1;
+              moveSlide(false);
+              } 
+            }, 1000);
+            // 인덱스 값이 슬라이드너비로하면 값이 바뀌게되서 그러면 안되서 
+          }
+        });
+            // 1000은 1초뒤에 실행시켜주겠다 라는뜻 천은 1초뒤!
+
+      prevButton.addEventListener(`click`, () => {
+        if (moveChecker) {
+          moveChecker = false;
+          index--;
+          moveSlide(true);
+
+          setTimeout(() => {
+            moveChecker = true;
+            if(index === 0) {
+              index = slideContentsWrapper.childElementCount -2;
+              // 다섯칸중 3번째칸 나와야 하니까 5-2 =3 한거다
+              moveSlide(false);
+            }
+          },1000); 
+        }
+      });
+
+      function moveSlide(transition) {
+        if(transition) {
+          slideContentsWrapper.style.transition = "1s";
+        } else{
+          slideContentsWrapper.style.transition = "0s";
+        }
+
+        slideContentsWrapper.style.transform = `translateX(-${index * 슬라이드너비}px)`;
+      }
+    </script>
+  </body>
+</html>
