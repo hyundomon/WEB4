@@ -80,7 +80,7 @@
         border-radius: 50%;
       }
 
-      .radio.seleted {
+      .radio.selected {
         background-color: red;
       }
       
@@ -112,6 +112,7 @@
       const cloneLast = slideContentsWrapper.lastElementChild.cloneNode(true);
       const 슬라이드너비 = document.querySelector(`.slider`).clientWidth;
 
+      // 자식요소 갯수 만큼 반복한다란는 뜻 밑에 i 식
       for(let i=0; i < slideContentsWrapper.childElementCount; i++) {
         const radioButton = document.createElement('div');
         radioButton.classList.add('radio');
@@ -120,7 +121,7 @@
       // 슬라이드 갯수에 따라서 알아서 라디오버튼이 만들어진다!! 위에 바디의 슬라이드갯수 조정가능!
       // 초기화해주기!!!
 
-      radioContainer.firstChild.classList.add("selected");
+      radioContainer.firstElementChild.classList.add("selected");
 
       slideContentsWrapper.insertBefore(cloneLast,slideContentsWrapper.firstChild);
       slideContentsWrapper.appendChild(cloneFirst);
