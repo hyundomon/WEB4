@@ -48,8 +48,8 @@
       .slide-content:nth-child(3) {
         background-color: green;
       } */
-/* nth-child()라는 가상선택자는 dom요소 순서를 기준으로 적용된다! */
-/* 그래서 앞뒤에 새로 추가해서 원래순서말고 순서대로 적용됨 */
+
+      /* nth-child()라는 가상선택자는 dom요소 순서를 기준으로 적용된다 */
 
       .content1 {
         background-color: red;
@@ -60,14 +60,12 @@
       .content3 {
         background-color: green;
       }
-      
       .buttons {
         width: 300px;
         display: flex;
         justify-content: space-between;
         margin-left: 24px;
       }
-
       .radio-container {
         display: flex;
         align-items: center;
@@ -78,13 +76,11 @@
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        cursor: pointer;
       }
 
       .radio.selected {
         background-color: red;
       }
-      
     </style>
   </head>
   <body>
@@ -97,9 +93,7 @@
     </div>
     <div class="buttons">
       <button class="prev">이전</button>
-      <div class="radio-container">
-        <!-- <div class="radio"></div> -->
-      </div>
+      <div class="radio-container"></div>
       <button class="next">다음</button>
     </div>
 
@@ -108,47 +102,35 @@
         `.slide-contents-wrapper`
       );
       const radioContainer = document.querySelector(".radio-container");
-    
       const cloneFirst = slideContentsWrapper.firstElementChild.cloneNode(true);
       const cloneLast = slideContentsWrapper.lastElementChild.cloneNode(true);
       const 슬라이드너비 = document.querySelector(`.slider`).clientWidth;
 
-      // 자식요소 갯수 만큼 반복한다란는 뜻 밑에 i 식
-      for(let i = 0; i < slideContentsWrapper.childElementCount; i++) {
-        const radioButton = document.createElement('div');
-        radioButton.classList.add('radio');
+      for (let i = 0; i < slideContentsWrapper.childElementCount; i++) {
+        const radioButton = document.createElement("div");
+        radioButton.classList.add("radio");
         radioContainer.appendChild(radioButton);
-
-        radioButton.addEventListener('click', ()=>{
-          index = i + 1;
-          moveSlide(true);
-          drowRadio();
-        });
       }
-      // 슬라이드 갯수에 따라서 알아서 라디오버튼이 만들어진다!! 위에 바디의 슬라이드갯수 조정가능!
-      // 초기화해주기!!!
 
-      radioContainer.firstElementChild.classList.add("selected");
-      // 일반적으로 firstChild로 쓰되, 작동이안되면!!firstElementChild로 써봐라!!
+      radioContainer.firstChild.classList.add("selected");
 
-      slideContentsWrapper.insertBefore(cloneLast,slideContentsWrapper.firstChild);
+      slideContentsWrapper.insertBefore(
+        cloneLast,
+        slideContentsWrapper.firstChild
+      );
       slideContentsWrapper.appendChild(cloneFirst);
-
-      const slideContents = document.getElementsByClassName("slide-content");
 
       const buttons = document.getElementsByTagName(`button`);
       const prevButton = buttons[0];
       const nextButton = buttons[1];
 
       let moveChecker = true;
-      // 무브체커 임의의 이름이고, 움직이고 있는지 아닌지 확인하는 것임!
 
-      // 이동거리를 인덱스로 바꿈 이동거리로다루는거보다 인덱스로 다루는게 더편함 그래서 바꿔줌 스앵님이
-      
       let index = 1;
       moveSlide(false);
 
       nextButton.addEventListener("click", () => {
+        //childElmentCount 프로퍼티에는 자식요소의 갯수 값이 들어있다
         if (moveChecker) {
           moveChecker = false;
           index++;
@@ -158,66 +140,57 @@
           setTimeout(() => {
             moveChecker = true;
             if (index === slideContentsWrapper.childElementCount - 1) {
-            //childElmentCount 프로퍼티에는 자식요소의 갯수 값이 들어있다
               index = 1;
               moveSlide(false);
-              } 
-            }, 1000);
-            // 1000은 1초뒤에 실행시켜주겠다 라는뜻 천은 1초뒤!
-            // 인덱스 값이 슬라이드너비로하면 값이 바뀌게되서 그러면 안되서 인덱스로 입력함
-          }
-        });
-
+            }
+          }, 1000);
+        }
+      });
       prevButton.addEventListener(`click`, () => {
         if (moveChecker) {
           moveChecker = false;
           index--;
           moveSlide(true);
-          
-        
+
           drowRadio();
           setTimeout(() => {
             moveChecker = true;
-            if(index === 0) {
-              index = slideContentsWrapper.childElementCount -2;
-              // 다섯칸중 3번째칸 나와야 하니까 5-2 =3 한거다
+            if (index === 0) {
+              index = slideContentsWrapper.childElementCount - 2;
               moveSlide(false);
             }
-          },1000); 
+          }, 1000);
         }
       });
 
       function moveSlide(transition) {
-        if(transition) {
-          slideContentsWrapper.style.transition = "1s";
-        } else{
-          slideContentsWrapper.style.transition = "0s";
+        if (transition) {
+          slideContentsWrapper.style.transition = `1s`;
+        } else {
+          slideContentsWrapper.style.transition = `0s`;
         }
 
-        slideContentsWrapper.style.transform = `translateX(-${index * 슬라이드너비}px)`;
+        slideContentsWrapper.style.transform = `translateX(-${
+          index * 슬라이드너비
+        }px)`;
       }
 
       function drowRadio() {
-        // 라디오버튼 색 초기화 하는것 밑에
         for (let i = 0; i < radioContainer.childElementCount; i++) {
-            radioContainer.children[i].classList.remove("selected"); 
-          }
-    
-          // index에 따라서 어떤 버튼에 빨간색상을 부여할지 정해주는 부분 밑에
-            if (index === slideContentsWrapper.childElementCount - 1) {
-              radioContainer.children[0].classList.add("selected");
-            }else if (index === 0) {
-              radioContainer.children[
-              lideContentsWrapper.childElementCount - 3
-              // 양쪽에 두개 합쳐서 5개라서 -3해줌
-            ].classList.add("selected");
-            } else {
-              radioContainer.children[index - 1].classList.add("selected");
-            }
+          radioContainer.children[i].classList.remove("selected");
+        }
+        console.log(index);
+
+        if (index === slideContentsWrapper.childElementCount - 1) {
+          radioContainer.children[0].classList.add("selected");
+        } else if (index === 0) {
+          radioContainer.children[
+            slideContentsWrapper.childElementCount - 3
+          ].classList.add("selected");
+        } else {
+          radioContainer.children[index - 1].classList.add("selected");
+        }
       }
-      // 위에 펑션 for 식들 묶어준 이유는 위에서는 반복해야해서ㅜㅜ 밑으로 빼서 보기쉽고 반복안하게끔 하나로 묶어주었다.
-      /* drowradio 는 빨간색 들어오게 해주는 기능.
-      i 가 0,1,2 인 상태로 반복할때, 초기화 시켜줬다? */
     </script>
   </body>
 </html>
