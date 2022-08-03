@@ -1,0 +1,60 @@
+:root {
+    --slider-width: 300px;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    list-style: none;
+  }
+  .slider {
+    margin: 24px;
+    width: var(--slider-width);
+    height: 200px;
+    border: 5px solid black;
+    overflow: hidden;
+  }
+
+  .slide-contents-wrapper {
+    display: flex;
+    transition: 1s;
+  }
+
+  .slide-content {
+    width: var(--slider-width);
+    height: 200px;
+    font-size: 56px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 200px;
+    flex-shrink: 0;
+  }
+
+  /* .slide-content:nth-child(1) {
+    background-color: red;
+  }
+  .slide-content:nth-child(2) {
+    background-color: blue;
+  }
+  .slide-content:nth-child(3) {
+    background-color: green;
+  } */
+
+  /* nth-child()라는 가상선택자는 dom요소 순서를 기준으로 적용된다 */
+
+  .content1 {
+    background-color: red;
+  }
+  .content2 {
+    background-color: blue;
+  }
+  .content3 {
+    background-color: green;
+  }
+  .buttons {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 24px;
+  }
